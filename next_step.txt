@@ -1,0 +1,1 @@
+NEXT STEP: Choose a free weather API (like https://open-meteo.com/) and fetch today's weather for your city.
