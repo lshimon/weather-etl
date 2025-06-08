@@ -1,0 +1,8 @@
+Step,Task Description,Status,Date Started,Date Done,Notes,Learned,Links
+1,Create folder, repo, and venv,✅ Done,2025-06-01,2025-06-01,Local project setup: weather-etl,Project structure, venv basics,
+2,Get API key from OpenWeather,✅ Done,2025-06-01,2025-06-01,Stored in config.py,API usage, securing keys,https://openweathermap.org/api
+3,Write script to pull weather,✅ Done,2025-06-01,2025-06-02,extract() and transform() complete,Requests, JSON parsing, datetime,
+4,Save data to CSV / DB,✅ Done,2025-06-02,2025-06-02,Saves to both CSV and SQLite,File I/O, SQLite schema, safe inserts,
+4.5,Data cleaning and transformation,✅ Done,2025-01-06,2025-01-06,"Created load_and_clean.py: clean empty rows, date parsing with errors='coerce', UTC timezone handling, save cleaned data to CSV and DB, production-style strict ISO date format","Pandas data cleaning, datetime parsing, timezone handling, production data quality standards, difference between flexible vs strict parsing",
+5,Schedule script (cron/Airflow),❌ Not started,,,Script still runs manually,,
+6,Visualize results,❌ Not started,,,Could use matplotlib/seaborn later,,

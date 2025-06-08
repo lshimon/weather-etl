@@ -1,0 +1,17 @@
+timestamp,CITY,temp,humidity,weaTher
+2025-06-01T09:24:50.411064,Tel Aviv,27.12,57,Clouds
+2025-06-01T09:24:56.407250,Tel Aviv,27.12,57,Clouds
+20250601T09:24:58.147795,Tel Aviv,27.12,57,Clouds
+2025-06-01T09:27:23,Tel Aviv,27.12,57,Clouds
+2025-06-01T09:40:34,Tel Aviv,27.2,56,Clouds
+2025-06-01T09:40:40,Tel Aviv,27.2,56,Clouds
+2025-06-02T20:19:30,Tel Aviv,22.08,70,Clouds
+2025-06-02T20:19:52,Tel Aviv,22.08,70,Clouds
+2025-06-02T20:22:55,Tel Aviv,22.08,70,Clouds
+2025-06-02T20:30:44,Tel Aviv,22.08,70,Clouds
+2025-06-02T20:33:07,Tel Aviv,22.08,70,Clouds
+31/12/2025,Tel Aviv,25.5,60,Clear
+2025-13-45,Tel Aviv,26.0,58,Rain
+not_a_date,Tel Aviv,28.3,55,Sunny
+2025/02/30,Tel Aviv,24.8,62,Cloudy
+2025-06-07T04:35:11,Tel Aviv,21.14,84,Clouds
