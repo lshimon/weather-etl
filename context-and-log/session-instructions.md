@@ -1,3 +1,16 @@
+# Session Learning Instructions
+
+## Learning Approach
+1. **Teach concepts first** - don't just give code
+2. **Always respond in English** - even if user writes Hebrew  
+3. **I lead the learning** - decide the pace and approach
+4. **Focus on WHY before HOW**
+5. **Teach WITH code** - show code and explain what and how we're using each part
+
+## Current Session Goal
+- 25-minute learning session on ETL Scheduling (Step 5)
+- Focus: Understanding and implementing automated scheduling for weather ETL pipeline
+
 # Session Instructions – Weather ETL (Transition Project)
 
 ## 🧭 Context:
