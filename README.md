@@ -77,6 +77,7 @@ Matplotlib Dashboard
 
 ![ETL Logging]
 <img width="652" height="106" alt="weather-etl-logging-success-screenshot" src="https://github.com/user-attachments/assets/33b3da2f-f361-4c55-9c2b-3fcfac6fa730" />
+
 <img width="731" height="102" alt="weather-etl-logging-failed-screenshot" src="https://github.com/user-attachments/assets/dd46592a-56e5-4e93-9a56-bc03f2054db7" />
 *Structured logging output showing successful ETL execution with timestamps*
 
