@@ -76,9 +76,13 @@ Matplotlib Dashboard
 *Multi-panel dashboard showing temperature trends, daily summaries, and data quality metrics*
 
 **Logs:**
+
 Success: 
+
 ![ETL Logging Success](https://github.com/user-attachments/assets/33b3da2f-f361-4c55-9c2b-3fcfac6fa730)
+
 Failed:
+
 ![ETL Logging Failed](https://github.com/user-attachments/assets/dd46592a-56e5-4e93-9a56-bc03f2054db7)
 
 *Structured logging output showing successful ETL execution with timestamps*
