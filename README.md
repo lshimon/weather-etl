@@ -13,13 +13,13 @@ The system includes advanced SQL analytics with window functions, data quality c
 ```
 OpenWeatherMap API
         ↓
-  Python ETL Script
+Python ETL Script
         ↓
-   SQLite Database
+SQLite Database
         ↓
-    SQL Analysis
+SQL Analysis
         ↓
-  Matplotlib Dashboard
+Matplotlib Dashboard
 ```
 
 ## Key Features
@@ -71,11 +71,13 @@ OpenWeatherMap API
 
 ## Screenshots
 
-![Weather Dashboard](https://drive.google.com/file/d/1NBnF1JUHAlw_E2wFZ7pKrHT83zjLHN0O/view?usp=sharing)
+![Weather Dashboard]
+<img width="1191" height="932" alt="weather-etl-dashboard-screenshot" src="https://github.com/user-attachments/assets/b54985eb-ef20-4a75-8d72-09b6f08d333d" />
 *Multi-panel dashboard showing temperature trends, daily summaries, and data quality metrics*
 
-![ETL Logging](https://drive.google.com/file/d/1LTqMOITCUEvVqRGLhpiZfQwwqmd46f6r/view?usp=sharing)
-(https://drive.google.com/file/d/1Eooj7I6z-l6bakU5WWLHGTNRX8pbdX0I/view?usp=sharing)
+![ETL Logging]
+<img width="652" height="106" alt="weather-etl-logging-success-screenshot" src="https://github.com/user-attachments/assets/33b3da2f-f361-4c55-9c2b-3fcfac6fa730" />
+<img width="731" height="102" alt="weather-etl-logging-failed-screenshot" src="https://github.com/user-attachments/assets/dd46592a-56e5-4e93-9a56-bc03f2054db7" />
 *Structured logging output showing successful ETL execution with timestamps*
 
 ## How to Run
