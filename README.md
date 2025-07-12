@@ -13,13 +13,13 @@ The system includes advanced SQL analytics with window functions, data quality c
 ```
 OpenWeatherMap API
         ↓
-  Python ETL Script
+Python ETL Script
         ↓
-   SQLite Database
+SQLite Database
         ↓
-    SQL Analysis
+SQL Analysis
         ↓
-  Matplotlib Dashboard
+Matplotlib Dashboard
 ```
 
 ## Key Features
