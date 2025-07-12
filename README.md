@@ -72,12 +72,14 @@ Matplotlib Dashboard
 ## Screenshots
 **Dashboard:**
 ![Weather Dashboard](https://github.com/user-attachments/assets/b54985eb-ef20-4a75-8d72-09b6f08d333d)
+
 *Multi-panel dashboard showing temperature trends, daily summaries, and data quality metrics*
 
 **Logs:**
 
 ![ETL Logging Success](https://github.com/user-attachments/assets/33b3da2f-f361-4c55-9c2b-3fcfac6fa730)
 ![ETL Logging Failed](https://github.com/user-attachments/assets/dd46592a-56e5-4e93-9a56-bc03f2054db7)
+
 *Structured logging output showing successful ETL execution with timestamps*
 
 ## How to Run
