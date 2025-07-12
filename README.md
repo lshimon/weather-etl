@@ -24,30 +24,30 @@ OpenWeatherMap API
 
 ## Key Features
 
-### 🔄 **Automated ETL Pipeline**
+### **Automated ETL Pipeline**
 - Scheduled data extraction every 10 minutes via cron
 - Robust error handling with comprehensive logging
 - Production-ready deployment at `/usr/local/weather-etl/`
 
-### 🛠️ **Data Engineering Best Practices**
+### **Data Engineering Best Practices**
 - Data validation and quality checks (missing values, outliers, duplicates)
 - Structured logging with timestamps and status indicators
 - Absolute path management for cron execution
 - Modular code architecture with separate ETL functions
 
-### 📊 **Advanced SQL Analytics**
+### **Advanced SQL Analytics**
 - Complex aggregations and window functions
 - Time-based data analysis (daily summaries, trend analysis)
 - Data quality monitoring queries
 - Efficient indexing and query optimization
 
-### 📈 **Dashboard & Insights**
+### **Dashboard & Insights**
 - Multi-panel visualization showing temperature trends
 - System health monitoring with data freshness indicators
 - Daily min/max temperature summaries with reading counts
 - Data quality metrics
 
-### 🎯 **Data Quality Monitoring**
+### **Data Quality Monitoring**
 - Automated validation of temperature ranges
 - Missing value detection and reporting
 - Duplicate record identification
@@ -71,11 +71,12 @@ OpenWeatherMap API
 
 ## Screenshots
 
-![Weather Dashboard](https://drive.google.com/file/d/1NBnF1JUHAlw_E2wFZ7pKrHT83zjLHN0O/view?usp=sharing)
+![Weather Dashboard](https://github.com/user-attachments/assets/b54985eb-ef20-4a75-8d72-09b6f08d333d)
 *Multi-panel dashboard showing temperature trends, daily summaries, and data quality metrics*
 
-![ETL Logging](https://drive.google.com/file/d/1LTqMOITCUEvVqRGLhpiZfQwwqmd46f6r/view?usp=sharing)
-(https://drive.google.com/file/d/1Eooj7I6z-l6bakU5WWLHGTNRX8pbdX0I/view?usp=sharing)
+![ETL Logging Success](https://github.com/user-attachments/assets/33b3da2f-f361-4c55-9c2b-3fcfac6fa730)
+
+![ETL Logging Failed](https://github.com/user-attachments/assets/dd46592a-56e5-4e93-9a56-bc03f2054db7)
 *Structured logging output showing successful ETL execution with timestamps*
 
 ## How to Run
@@ -141,19 +142,19 @@ Current pipeline status:
 
 This project serves as a foundation for expanding into modern cloud-native data engineering tools:
 
-### 🚀 Next Phase: Cloud Migration
+### **Next Phase: Cloud Migration**
 - **Data Warehousing:** Load to BigQuery / Snowflake / Redshift
 - **Orchestration:** Replace cron with Apache Airflow / Prefect
 - **Data Modeling:** Implement dbt for transformation layer
 - **Cloud Storage:** Migrate to GCS / S3 for scalable storage
 
-### 🔧 Advanced Features
+### **Advanced Features**
 - **Stream Processing:** Real-time data with Apache Kafka
 - **Data Lakehouse:** Delta Lake / Apache Iceberg architecture
 - **MLOps Integration:** Feature stores and model serving
 - **Infrastructure as Code:** Terraform for cloud deployment
 
-### 📊 Enhanced Analytics
+### **Enhanced Analytics**
 - **Business Intelligence:** Tableau / Power BI integration
 - **Data Catalog:** Implement metadata management
 - **Monitoring:** Prometheus / Grafana for production monitoring
