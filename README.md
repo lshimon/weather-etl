@@ -4,7 +4,7 @@ A production-ready data engineering project demonstrating automated ETL pipeline
 
 ## Project Overview
 
-This project implements a complete ETL pipeline that extracts weather data from the OpenWeatherMap API, transforms and validates the data using Python, and loads it into a SQLite database for analysis. The pipeline runs automatically every 10 minutes via cron scheduling, collecting 210 weather records with comprehensive data quality monitoring.
+This project implements a complete ETL pipeline that extracts weather data from the OpenWeatherMap API, transforms and validates the data using Python, and loads it into a SQLite database for analysis. The pipeline runs every 10 minutes via cron and has collected 210+ weather records to date, with full data quality monitoring.
 
 The system includes advanced SQL analytics with window functions, data quality checks for missing values and outliers, and a multi-panel matplotlib dashboard that provides up-to-date insights into weather patterns and system health. Built with production practices including structured logging, error handling, and absolute path management for cron execution.
 
