@@ -140,12 +140,12 @@ GROUP BY DATE(timestamp)
 ORDER BY date DESC;
 ```
 
-## Data Quality Metrics
+## Data Quality Snapshot (As of Oct 2025)
 
-Current pipeline status:
-- **Total Records:** 210
-- **Data Quality:** 100% (0 missing values, 0 outliers, 0 duplicates)
-- **Automation:** Running successfully every 10 minutes via cron
+A sample snapshot of the pipeline's performance over its initial run period:
+- **Total Records Collected:** 200+
+- **Data Quality:** Maintained 100% valid data (post-validation) by successfully filtering out source anomalies.
+- **Automation Status:** Stable execution every 10 minutes via cron.
 
 ## Future Scope / Learning Path
 

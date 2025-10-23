@@ -46,6 +46,11 @@ def extract():
 
 def transform(data):
     """Extract relevant fields from API response"""
+
+    # Discovered during initial runs that the API sometimes sends temperature as a string.
+    # So I added explicit casting to float to prevent database type errors.
+    temp_value = float(data["main"]["temp"])
+
     return {
         "timestamp": datetime.utcnow().replace(microsecond=0).isoformat() + "+00:00",
         "city": data["name"],

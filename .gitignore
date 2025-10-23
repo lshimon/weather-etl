@@ -30,3 +30,7 @@ cron.log
 
 # Output files
 output/
+
+# Project files
+context-and-log/
+archive/
