@@ -1,24 +1,31 @@
-#!/usr/bin/env python3
-"""
-Production Weather ETL Script for Cron
-Runs automatically every 10 minutes via cron job
-"""
-
 import os
 import sys
 from datetime import datetime
+from config import API_KEY, CITY
+import requests
+import csv
+import sqlite3
+from google.cloud import bigquery
+
+# ==================================
+# BigQuery Configuration
+# !! You will update this path on your new computer !!
+SERVICE_ACCOUNT_PATH = "/path/to/your/service_account.json" 
+
+# !! Update this with your actual GCP Project ID !!
+BIGQUERY_PROJECT_ID = "your-gcp-project-id" 
+BIGQUERY_DATASET_ID = "weather_db" # This is the Dataset name we will create
+BIGQUERY_TABLE_ID = "weather_data" # This is the Table name we will create
+
+# Set the environment variable so Google's library can find the key
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = SERVICE_ACCOUNT_PATH
+# ==================================
 
 # Set absolute paths for cron execution
 BASE_PATH = "/usr/local/weather-etl"
 
 # Add current directory to Python path
 sys.path.insert(0, BASE_PATH)
-
-# Import application modules
-from config import API_KEY, CITY
-import requests
-import csv
-import sqlite3
 
 def log_message(message):
     """Add timestamp to all log messages"""
@@ -116,6 +123,34 @@ def load_to_sqlite(data, db_name=f"{BASE_PATH}/output/weather.db"):
         
     except Exception as e:
         log_message(f"❌ SQLite save failed: {e}")
+        return False
+
+def load_to_bigquery(data, client):
+    """Loads the processed data row into the BigQuery table."""
+    
+    try:
+        # 1. Define the full table 'address'
+        table_full_id = f"{BIGQUERY_PROJECT_ID}.{BIGQUERY_DATASET_ID}.{BIGQUERY_TABLE_ID}"
+        
+        # 2. BigQuery expects a list of rows, even if we send only one.
+        rows_to_insert = [data] 
+        
+        # 3. This is the command to send the data
+        errors = client.insert_rows_json(table_full_id, rows_to_insert)  
+        
+        # 4. Check if the command worked
+        if errors == []:
+            # Success!
+            log_message("SUCCESS", f"Data loaded to BigQuery table {table_full_id}")
+            return True
+        else:
+            # Failure. The API returned errors.
+            log_message("ERROR", f"Failed to load data to BigQuery: {errors}")
+            return False
+            
+    except Exception as e:
+        # Failure. Something else broke (like bad credentials, no internet, etc.)
+        log_message("ERROR", f"Exception during BigQuery load: {e}")
         return False
 
 def validate_data(data):
