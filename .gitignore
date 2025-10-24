@@ -34,3 +34,6 @@ output/
 # Project files
 context-and-log/
 archive/
+
+# Ignore Google Cloud service account key
+weather-etl-476111-68b860a4d4a2.json
