@@ -10,10 +10,10 @@ from google.cloud import bigquery
 # ==================================
 # BigQuery Configuration
 # !! You will update this path on your new computer !!
-SERVICE_ACCOUNT_PATH = "/path/to/your/service_account.json" 
+SERVICE_ACCOUNT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "weather-etl-476111-68b860a4d4a2.json")
 
 # !! Update this with your actual GCP Project ID !!
-BIGQUERY_PROJECT_ID = "your-gcp-project-id" 
+BIGQUERY_PROJECT_ID = "weather-etl-476111" 
 BIGQUERY_DATASET_ID = "weather_db" # This is the Dataset name we will create
 BIGQUERY_TABLE_ID = "weather_data" # This is the Table name we will create
 
@@ -22,7 +22,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = SERVICE_ACCOUNT_PATH
 # ==================================
 
 # Set absolute paths for cron execution
-BASE_PATH = "/usr/local/weather-etl"
+BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 
 # Add current directory to Python path
 sys.path.insert(0, BASE_PATH)
@@ -141,16 +141,16 @@ def load_to_bigquery(data, client):
         # 4. Check if the command worked
         if errors == []:
             # Success!
-            log_message("SUCCESS", f"Data loaded to BigQuery table {table_full_id}")
+            log_message(f"✅ Data loaded to BigQuery table {table_full_id}")
             return True
         else:
             # Failure. The API returned errors.
-            log_message("ERROR", f"Failed to load data to BigQuery: {errors}")
+            log_message(f"❌ Failed to load data to BigQuery: {errors}")
             return False
             
     except Exception as e:
         # Failure. Something else broke (like bad credentials, no internet, etc.)
-        log_message("ERROR", f"Exception during BigQuery load: {e}")
+        log_message(f"❌ Exception during BigQuery load: {e}")
         return False
 
 def validate_data(data):
@@ -206,12 +206,56 @@ def run_etl():
     
     log_message("✅ Data validation passed")
     
+# PREPARE BigQuery 
+    # Initialize BigQuery client
+    try:
+        bigquery_client = bigquery.Client(project=BIGQUERY_PROJECT_ID)
+        log_message("✅ Connected to BigQuery")
+        
+        # Create dataset if it doesn't exist
+        dataset_ref = bigquery_client.dataset(BIGQUERY_DATASET_ID)
+        try:
+            bigquery_client.get_dataset(dataset_ref)
+            log_message(f"✅ Dataset {BIGQUERY_DATASET_ID} already exists")
+        except Exception:
+            # Dataset doesn't exist, create it
+            dataset = bigquery.Dataset(dataset_ref)
+            dataset.location = "US"  # Specify the location
+            dataset = bigquery_client.create_dataset(dataset)
+            log_message(f"✅ Created dataset {BIGQUERY_DATASET_ID}")
+        
+        # Create table if it doesn't exist
+        table_ref = dataset_ref.table(BIGQUERY_TABLE_ID)
+        try:
+            bigquery_client.get_table(table_ref)
+            log_message(f"✅ Table {BIGQUERY_TABLE_ID} already exists")
+        except Exception:
+            # Table doesn't exist, create it
+            schema = [
+                bigquery.SchemaField("timestamp", "TIMESTAMP"),
+                bigquery.SchemaField("city", "STRING"),
+                bigquery.SchemaField("temp", "FLOAT"),
+                bigquery.SchemaField("humidity", "INTEGER"),
+                bigquery.SchemaField("weather", "STRING")
+            ]
+            table = bigquery.Table(table_ref, schema=schema)
+            table = bigquery_client.create_table(table)
+            log_message(f"✅ Created table {BIGQUERY_TABLE_ID}")
+        bigquery_success = True
+    except Exception as e:
+        log_message(f"❌ BigQuery setup failed: {e}")
+        bigquery_success = False
+    
     # Load
     csv_success = load_to_csv(processed_data)
     db_success = load_to_sqlite(processed_data)
+
+    # Only attempt BigQuery load if setup was successful
+    if 'bigquery_success' not in locals() or bigquery_success:
+        bigquery_success = load_to_bigquery(processed_data, bigquery_client)
     
-    if csv_success and db_success:
-        log_message("🎉 ETL completed successfully!")
+    if bigquery_success:
+        log_message("🎉 ETL completed successfully with BigQuery integration!")
         return True
     else:
         log_message("⚠️ ETL completed with some failures")
